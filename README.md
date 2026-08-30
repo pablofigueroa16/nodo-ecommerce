@@ -23,6 +23,7 @@ nodo-ecommerce/
 ├── perifericos.html    Categoría: Periféricos
 ├── audio.html          Categoría: Audio
 ├── componentes.html    Categoría: Componentes
+├── img/                Fotos de los productos (Unsplash)
 ├── css/
 │   └── estilos.css     Hoja de estilos general
 └── README.md
@@ -54,3 +55,10 @@ cd nodo-ecommerce
 - Listado de productos y detalle de producto.
 - Carrito de compras.
 - Validación de formularios con JavaScript.
+
+## Créditos de las imágenes
+
+Las fotos de productos provienen de [Unsplash](https://unsplash.com) y se usan
+bajo la [Unsplash License](https://unsplash.com/license), que permite su uso
+gratuito, incluso comercial, sin requerir atribución. Están descargadas en
+`img/` para que el sitio funcione sin depender de servicios externos.

@@ -235,3 +235,15 @@ footer {
   font-size: 14px;
   color: var(--texto-suave);
 }
+
+/* ===== Fotos de producto ===== */
+
+.tarjeta .foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background-color: var(--fondo);
+}
