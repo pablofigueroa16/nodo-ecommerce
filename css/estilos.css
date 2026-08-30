@@ -1,0 +1,237 @@
+/* ===== Nodo — hoja de estilos general ===== */
+
+:root {
+  --fondo: #f6f7f9;
+  --superficie: #ffffff;
+  --texto: #14181f;
+  --texto-suave: #5b6472;
+  --borde: #e2e5ea;
+  --acento: #1f6feb;
+  --acento-oscuro: #1550b3;
+  --barra: #14181f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+/* ===== Navbar ===== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 14px 28px;
+  background-color: var(--barra);
+  color: #ffffff;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.marca .logo {
+  color: var(--acento);
+}
+
+.navbar nav {
+  margin-left: auto;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: #d7dce4;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.navbar a:hover,
+.navbar a.activo {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-logout {
+  padding: 8px 16px;
+  border: 1px solid #3a4150;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #d7dce4;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background-color: #262c38;
+  color: #ffffff;
+}
+
+/* ===== Contenido ===== */
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 28px 64px;
+}
+
+h1 {
+  font-size: 34px;
+  margin: 0 0 8px;
+}
+
+.bajada {
+  color: var(--texto-suave);
+  margin: 0 0 32px;
+  max-width: 60ch;
+}
+
+/* ===== Grilla de categorias / productos ===== */
+
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta {
+  display: block;
+  padding: 22px;
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.tarjeta:hover {
+  border-color: var(--acento);
+}
+
+.tarjeta h2,
+.tarjeta h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.tarjeta p {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+.precio {
+  display: block;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+/* ===== Formularios ===== */
+
+.caja-form {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+
+.caja-form h1 {
+  font-size: 26px;
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.campo input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.campo input:focus {
+  outline: 2px solid var(--acento);
+  border-color: var(--acento);
+}
+
+.btn-enviar {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--acento);
+  color: #ffffff;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-enviar:hover {
+  background-color: var(--acento-oscuro);
+}
+
+.pie-form {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+.pie-form a {
+  color: var(--acento);
+}
+
+/* ===== Pie de pagina ===== */
+
+footer {
+  padding: 24px 28px;
+  border-top: 1px solid var(--borde);
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
