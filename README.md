@@ -15,10 +15,6 @@ El proyecto se entrega por etapas:
 
 Todavía no hay lógica de servidor ni base de datos.
 
-![Home de Nodo en escritorio](capturas/home.webp)
-
-![Nodo en celular: categoría, menú abierto y login](capturas/movil.webp)
-
 ## Estructura del proyecto
 
 ```
@@ -31,11 +27,52 @@ nodo-ecommerce/
 ├── audio.html          Categoría: Audio
 ├── componentes.html    Categoría: Componentes
 ├── img/                Logo (SVG) y fotos de productos (WebP, Unsplash)
-├── capturas/           Capturas de pantalla para este README
 ├── css/
 │   └── estilos.css     Hoja de estilos general
 └── README.md
 ```
+
+## Etapa 1: estructura general
+
+El objetivo de esta etapa fue armar la estructura de la aplicación con HTML:
+la página de inicio, una página por categoría y los formularios de login y
+registro. El profesor confirmó que todas las consignas quedaron completas.
+
+### Páginas
+
+| Página | Archivo | `<title>` | Título del body |
+|---|---|---|---|
+| Home | `index.html` | Nodo | Bienvenido a Nodo |
+| Notebooks | `notebooks.html` | Nodo \| Notebooks | Notebooks |
+| Periféricos | `perifericos.html` | Nodo \| Periféricos | Periféricos |
+| Audio | `audio.html` | Nodo \| Audio | Audio |
+| Componentes | `componentes.html` | Nodo \| Componentes | Componentes |
+| Login | `login.html` | Nodo \| Iniciar sesión | Iniciar sesión |
+| Registro | `registro.html` | Nodo \| Crear cuenta | Crear cuenta |
+
+### Consignas cumplidas
+
+- **Repositorio:** público en GitHub, con este README que incluye nombre,
+  apellido y descripción del proyecto.
+- **Home:** `index.html` con el nombre de la tienda en el `<title>` y un título
+  en el body.
+- **Navbar:** presente en todas las páginas, con el ícono de la tienda, enlace a
+  Home, las cuatro categorías y un botón de cerrar sesión.
+- **Categorías:** cuatro páginas (Notebooks, Periféricos, Audio y Componentes),
+  cada una con `<title>` "Nodo | Nombre de la categoría" y el nombre de la
+  categoría como título del body. Se accede a todas desde el navbar.
+- **Login:** formulario con los campos email y contraseña y botón de submit.
+- **Registro:** formulario con los campos nombre, apellido, email, contraseña y
+  fecha de nacimiento, y botón de submit.
+
+### Decisiones de estructura
+
+- **Una categoría más de las pedidas:** la consigna pide al menos tres en el
+  navbar y cuatro páginas; se hicieron cuatro y todas están en el navbar.
+- **Inputs con el tipo adecuado:** `email`, `password` y `date` según el dato,
+  cada uno con su `<label>` y marcado como `required`.
+- **HTML semántico:** `header`, `nav`, `main`, `section`, `article` y `footer`
+  para ordenar el contenido de cada página.
 
 ## Etapa 2: estilos e identidad
 
