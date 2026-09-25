@@ -23,7 +23,7 @@ nodo-ecommerce/
 ├── perifericos.html    Categoría: Periféricos
 ├── audio.html          Categoría: Audio
 ├── componentes.html    Categoría: Componentes
-├── img/                Fotos de los productos (Unsplash)
+├── img/                Logo (SVG) y fotos de productos (WebP, Unsplash)
 ├── css/
 │   └── estilos.css     Hoja de estilos general
 └── README.md
