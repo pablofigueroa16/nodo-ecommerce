@@ -9,11 +9,14 @@
   --acento-suave: #ebf0ff;
   --acento-profundo: #0b1a66;
   --anillo-foco: rgba(31, 75, 255, 0.18);
+  --acento-brillo: rgba(31, 75, 255, 0.18);
+  --linea-acento: rgba(31, 75, 255, 0.06);
 
   --secundario: #ff6b1a;
   --secundario-oscuro: #d9480f;
   --secundario-suave: #fff1e8;
   --secundario-brillo: rgba(255, 107, 26, 0.38);
+  --secundario-brillo-suave: rgba(255, 107, 26, 0.14);
 
   --fondo: #f5f7fb;
   --superficie: #ffffff;
@@ -475,14 +478,54 @@ a.tarjeta:hover .tarjeta-foto img {
 
 /* ===== Formularios ===== */
 
+.pagina-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 18%, var(--acento-brillo), transparent 38%),
+    radial-gradient(circle at 88% 82%, var(--secundario-brillo-suave), transparent 40%),
+    var(--fondo);
+  background-attachment: fixed;
+}
+
+.pagina-form::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--linea-acento) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linea-acento) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, black 20%, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 45%, black 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.pagina-form main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  padding-top: 56px;
+  padding-bottom: 80px;
+}
+
+.pagina-form footer {
+  border-top-color: transparent;
+}
+
 .caja-form {
+  width: 100%;
   max-width: 460px;
   margin: 0 auto;
   padding: 34px 32px 32px;
   background-color: var(--superficie);
   border: 1px solid var(--borde);
-  border-radius: var(--radio-md);
-  box-shadow: var(--sombra-sm);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-md);
 }
 
 .form-eyebrow {
