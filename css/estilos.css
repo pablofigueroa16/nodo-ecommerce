@@ -1,15 +1,48 @@
 /* ===== Nodo — hoja de estilos general ===== */
 
+/* ===== Variables ===== */
+
 :root {
-  --fondo: #f6f7f9;
+  /* ===== Colores ===== */
+  --acento: #1f4bff;
+  --acento-oscuro: #1535cc;
+  --acento-suave: #ebf0ff;
+  --anillo-foco: rgba(31, 75, 255, 0.18);
+
+  --secundario: #ff6b1a;
+  --secundario-oscuro: #d9480f;
+  --secundario-suave: #fff1e8;
+
+  --fondo: #f5f7fb;
   --superficie: #ffffff;
-  --texto: #14181f;
-  --texto-suave: #5b6472;
-  --borde: #e2e5ea;
-  --acento: #1f6feb;
-  --acento-oscuro: #1550b3;
-  --barra: #14181f;
+  --superficie-vidrio: rgba(255, 255, 255, 0.78);
+  --texto: #0f1424;
+  --texto-suave: #5a6378;
+  --texto-invertido: #ffffff;
+  --placeholder: #a3abbd;
+  --borde: #e1e5ee;
+  --borde-hover: #c9d0de;
+
+  /* ===== Tipografia ===== */
+  --fuente-texto: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fuente-titulos: "Space Grotesk", "Inter", "Segoe UI", sans-serif;
+
+  /* ===== Bordes ===== */
+  --radio-lg: 16px;
+  --radio-md: 14px;
+  --radio-sm: 10px;
+  --radio-pildora: 999px;
+
+  /* ===== Sombras ===== */
+  --sombra-sm: 0 6px 24px rgba(15, 20, 36, 0.06);
+  --sombra-md: 0 10px 28px rgba(15, 20, 36, 0.08);
+
+  /* ===== Transiciones ===== */
+  --transicion: 0.18s ease;
+  --transicion-lenta: 0.35s ease;
 }
+
+/* ===== Base ===== */
 
 * {
   box-sizing: border-box;
@@ -17,10 +50,17 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--fuente-texto);
   background-color: var(--fondo);
   color: var(--texto);
   line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  letter-spacing: -0.02em;
 }
 
 /* ===== Navbar ===== */
@@ -37,12 +77,12 @@ body {
   max-width: 1080px;
   margin: 16px auto 0;
   padding: 12px 22px;
-  background-color: rgba(255, 255, 255, 0.78);
+  background-color: var(--superficie-vidrio);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   backdrop-filter: saturate(180%) blur(14px);
   border: 1px solid var(--borde);
-  border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(20, 24, 31, 0.06);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-sm);
   color: var(--texto);
 }
 
@@ -52,9 +92,10 @@ body {
   gap: 10px;
   color: var(--texto);
   text-decoration: none;
-  font-size: 19px;
+  font-family: var(--fuente-titulos);
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .marca .logo {
@@ -77,12 +118,12 @@ body {
 .navbar nav a {
   display: block;
   padding: 7px 13px;
-  border-radius: 9px;
+  border-radius: var(--radio-sm);
   color: var(--texto-suave);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  transition: background-color 0.18s ease, color 0.18s ease;
+  transition: background-color var(--transicion), color var(--transicion);
 }
 
 .navbar nav a:hover {
@@ -91,8 +132,8 @@ body {
 }
 
 .navbar nav a.activo {
-  background-color: var(--fondo);
-  color: var(--texto);
+  background-color: var(--acento-suave);
+  color: var(--acento);
   font-weight: 600;
 }
 
@@ -104,12 +145,12 @@ body {
 
 .acciones > a {
   padding: 7px 13px;
-  border-radius: 9px;
+  border-radius: var(--radio-sm);
   color: var(--texto-suave);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  transition: background-color 0.18s ease, color 0.18s ease;
+  transition: background-color var(--transicion), color var(--transicion);
 }
 
 .acciones > a:hover {
@@ -120,20 +161,20 @@ body {
 .btn-logout {
   padding: 8px 16px;
   border: 1px solid var(--borde);
-  border-radius: 999px;
+  border-radius: var(--radio-pildora);
   background-color: transparent;
   color: var(--texto);
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  transition: background-color var(--transicion), border-color var(--transicion), color var(--transicion);
 }
 
 .btn-logout:hover {
   background-color: var(--texto);
   border-color: var(--texto);
-  color: #ffffff;
+  color: var(--texto-invertido);
 }
 
 /* ===== Contenido ===== */
@@ -145,7 +186,7 @@ main {
 }
 
 h1 {
-  font-size: 34px;
+  font-size: 36px;
   margin: 0 0 8px;
 }
 
@@ -171,15 +212,15 @@ h1 {
   overflow: hidden;
   background-color: var(--superficie);
   border: 1px solid var(--borde);
-  border-radius: 14px;
+  border-radius: var(--radio-md);
   color: inherit;
   text-decoration: none;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  transition: border-color var(--transicion), box-shadow var(--transicion), transform var(--transicion);
 }
 
 a.tarjeta:hover {
-  border-color: #cfd4dc;
-  box-shadow: 0 10px 28px rgba(20, 24, 31, 0.08);
+  border-color: var(--borde-hover);
+  box-shadow: var(--sombra-md);
   transform: translateY(-3px);
 }
 
@@ -193,7 +234,7 @@ a.tarjeta:hover {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  transition: transform 0.35s ease;
+  transition: transform var(--transicion-lenta);
 }
 
 a.tarjeta:hover .tarjeta-foto img {
@@ -209,7 +250,7 @@ a.tarjeta:hover .tarjeta-foto img {
 
 .tarjeta h2 {
   margin: 0 0 6px;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
 }
 
@@ -235,13 +276,13 @@ a.tarjeta:hover .tarjeta-foto img {
   overflow: hidden;
   background-color: var(--superficie);
   border: 1px solid var(--borde);
-  border-radius: 14px;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  border-radius: var(--radio-md);
+  transition: border-color var(--transicion), box-shadow var(--transicion), transform var(--transicion);
 }
 
 .producto:hover {
-  border-color: #cfd4dc;
-  box-shadow: 0 10px 28px rgba(20, 24, 31, 0.08);
+  border-color: var(--borde-hover);
+  box-shadow: var(--sombra-md);
   transform: translateY(-3px);
 }
 
@@ -255,7 +296,7 @@ a.tarjeta:hover .tarjeta-foto img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: transform 0.35s ease;
+  transition: transform var(--transicion-lenta);
 }
 
 .producto:hover .producto-foto img {
@@ -280,7 +321,7 @@ a.tarjeta:hover .tarjeta-foto img {
 
 .producto-nombre {
   margin: 0 0 8px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -301,27 +342,29 @@ a.tarjeta:hover .tarjeta-foto img {
 }
 
 .precio {
-  font-size: 19px;
+  font-family: var(--fuente-titulos);
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  color: var(--secundario-oscuro);
 }
 
 .btn-agregar {
   padding: 9px 18px;
-  border: 1px solid var(--texto);
-  border-radius: 999px;
+  border: 1px solid var(--acento);
+  border-radius: var(--radio-pildora);
   background-color: transparent;
-  color: var(--texto);
+  color: var(--acento);
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.18s ease, color 0.18s ease;
+  transition: background-color var(--transicion), color var(--transicion);
 }
 
 .btn-agregar:hover {
-  background-color: var(--texto);
-  color: #ffffff;
+  background-color: var(--acento);
+  color: var(--texto-invertido);
 }
 
 /* ===== Formularios ===== */
@@ -332,8 +375,8 @@ a.tarjeta:hover .tarjeta-foto img {
   padding: 34px 32px 32px;
   background-color: var(--superficie);
   border: 1px solid var(--borde);
-  border-radius: 14px;
-  box-shadow: 0 10px 28px rgba(20, 24, 31, 0.06);
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-sm);
 }
 
 .form-eyebrow {
@@ -342,13 +385,13 @@ a.tarjeta:hover .tarjeta-foto img {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--texto-suave);
+  color: var(--acento);
   text-align: center;
 }
 
 .caja-form h1 {
   margin: 0 0 8px;
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 600;
   text-align: center;
 }
@@ -376,22 +419,22 @@ a.tarjeta:hover .tarjeta-foto img {
   width: 100%;
   padding: 11px 14px;
   border: 1px solid var(--borde);
-  border-radius: 10px;
+  border-radius: var(--radio-sm);
   background-color: var(--superficie);
   color: var(--texto);
   font-size: 15px;
   font-family: inherit;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
 }
 
 .campo input::placeholder {
-  color: #a6adb9;
+  color: var(--placeholder);
 }
 
 .campo input:focus {
   outline: none;
   border-color: var(--acento);
-  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.14);
+  box-shadow: 0 0 0 3px var(--anillo-foco);
 }
 
 .btn-enviar {
@@ -399,14 +442,14 @@ a.tarjeta:hover .tarjeta-foto img {
   margin-top: 8px;
   padding: 12px;
   border: 1px solid var(--acento);
-  border-radius: 10px;
+  border-radius: var(--radio-sm);
   background-color: var(--acento);
-  color: #ffffff;
+  color: var(--texto-invertido);
   font-size: 15px;
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.18s ease, border-color 0.18s ease;
+  transition: background-color var(--transicion), border-color var(--transicion);
 }
 
 .btn-enviar:hover {
@@ -442,4 +485,3 @@ footer {
   font-size: 14px;
   color: var(--texto-suave);
 }
-
