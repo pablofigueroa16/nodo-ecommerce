@@ -99,7 +99,7 @@ h3 {
 }
 
 .marca .logo {
-  color: var(--acento);
+  display: block;
 }
 
 .navbar nav {
