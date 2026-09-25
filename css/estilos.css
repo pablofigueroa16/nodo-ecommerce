@@ -565,10 +565,6 @@ a.tarjeta:hover .tarjeta-foto img {
   padding-bottom: 80px;
 }
 
-.pagina-form footer {
-  border-top-color: transparent;
-}
-
 .caja-form {
   width: 100%;
   max-width: 460px;
@@ -680,11 +676,61 @@ a.tarjeta:hover .tarjeta-foto img {
 /* ===== Pie de pagina ===== */
 
 footer {
-  padding: 24px 28px;
+  padding: 48px 28px 24px;
+  background-color: var(--superficie);
   border-top: 1px solid var(--borde);
-  text-align: center;
   font-size: 14px;
   color: var(--texto-suave);
+}
+
+.footer-contenido {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 32px;
+  max-width: 1024px;
+  margin: 0 auto 36px;
+}
+
+.footer-marca p {
+  max-width: 36ch;
+  margin: 14px 0 0;
+  line-height: 1.6;
+}
+
+.footer-titulo {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.footer-columna ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-columna a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  transition: color var(--transicion);
+}
+
+.footer-columna a:hover {
+  color: var(--acento);
+}
+
+.footer-copy {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
+  font-size: 13px;
 }
 
 /* ===== Responsive ===== */
@@ -785,5 +831,19 @@ footer {
 
   .caja-form h1 {
     font-size: 24px;
+  }
+
+  footer {
+    padding: 36px 16px 20px;
+  }
+
+  .footer-contenido {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+    margin-bottom: 28px;
+  }
+
+  .footer-marca {
+    grid-column: 1 / -1;
   }
 }
