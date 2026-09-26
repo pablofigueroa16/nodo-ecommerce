@@ -19,16 +19,17 @@ Todavía no hay lógica de servidor ni base de datos.
 
 ```
 nodo-ecommerce/
-├── index.html          Página de inicio (home)
-├── login.html          Formulario de inicio de sesión
-├── registro.html       Formulario de registro de usuario
-├── notebooks.html      Categoría: Notebooks
-├── perifericos.html    Categoría: Periféricos
-├── audio.html          Categoría: Audio
-├── componentes.html    Categoría: Componentes
-├── img/                Logo (SVG) y fotos de productos (WebP, Unsplash)
+├── index.html              Página de inicio (home)
+├── pages/
+│   ├── login.html          Formulario de inicio de sesión
+│   ├── registro.html       Formulario de registro de usuario
+│   ├── notebooks.html      Categoría: Notebooks
+│   ├── perifericos.html    Categoría: Periféricos
+│   ├── audio.html          Categoría: Audio
+│   └── componentes.html    Categoría: Componentes
+├── img/                    Logo (SVG) y fotos de productos (WebP, Unsplash)
 ├── css/
-│   └── estilos.css     Hoja de estilos general
+│   └── estilos.css         Hoja de estilos general
 └── README.md
 ```
 
@@ -43,12 +44,12 @@ registro. El profesor confirmó que todas las consignas quedaron completas.
 | Página | Archivo | `<title>` | Título del body |
 |---|---|---|---|
 | Home | `index.html` | Nodo | Bienvenido a Nodo |
-| Notebooks | `notebooks.html` | Nodo \| Notebooks | Notebooks |
-| Periféricos | `perifericos.html` | Nodo \| Periféricos | Periféricos |
-| Audio | `audio.html` | Nodo \| Audio | Audio |
-| Componentes | `componentes.html` | Nodo \| Componentes | Componentes |
-| Login | `login.html` | Nodo \| Iniciar sesión | Iniciar sesión |
-| Registro | `registro.html` | Nodo \| Crear cuenta | Crear cuenta |
+| Notebooks | `pages/notebooks.html` | Nodo \| Notebooks | Notebooks |
+| Periféricos | `pages/perifericos.html` | Nodo \| Periféricos | Periféricos |
+| Audio | `pages/audio.html` | Nodo \| Audio | Audio |
+| Componentes | `pages/componentes.html` | Nodo \| Componentes | Componentes |
+| Login | `pages/login.html` | Nodo \| Iniciar sesión | Iniciar sesión |
+| Registro | `pages/registro.html` | Nodo \| Crear cuenta | Crear cuenta |
 
 ### Consignas cumplidas
 
