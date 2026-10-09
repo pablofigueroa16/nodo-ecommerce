@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="../css/estilos.css">
   <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/categoria.js"></script>
 </head>
 <body>
 
@@ -21,50 +22,7 @@
     <h1>Audio</h1>
     <p class="bajada">Auriculares, parlantes y micrófonos para escuchar y grabar.</p>
 
-    <div class="grilla">
-      <article class="producto">
-        <div class="producto-foto">
-          <img src="../img/auriculares.webp" alt="Auriculares inalámbricos vinchados">
-        </div>
-        <div class="producto-cuerpo">
-          <p class="producto-specs">Bluetooth 5.3 · 30 h · Cancelación de ruido</p>
-          <h3 class="producto-nombre">Auriculares inalámbricos</h3>
-          <p class="producto-desc">Cancelación activa de ruido para aislarte en el colectivo o en la biblioteca. Treinta horas de batería y carga rápida por USB-C.</p>
-          <div class="producto-pie">
-            <span class="precio">$ 135.000</span>
-            <button class="btn-agregar" type="button">Agregar</button>
-          </div>
-        </div>
-      </article>
-      <article class="producto">
-        <div class="producto-foto">
-          <img src="../img/parlante.webp" alt="Parlante portátil bluetooth">
-        </div>
-        <div class="producto-cuerpo">
-          <p class="producto-specs">20 W · Resistente al agua · 12 h</p>
-          <h3 class="producto-nombre">Parlante portátil</h3>
-          <p class="producto-desc">Resistente al agua y al polvo, así que aguanta la pileta y la playa sin drama. Veinte watts que llenan una habitación sin distorsionar.</p>
-          <div class="producto-pie">
-            <span class="precio">$ 78.000</span>
-            <button class="btn-agregar" type="button">Agregar</button>
-          </div>
-        </div>
-      </article>
-      <article class="producto">
-        <div class="producto-foto">
-          <img src="../img/microfono.webp" alt="Micrófono USB de condensador con soporte">
-        </div>
-        <div class="producto-cuerpo">
-          <p class="producto-specs">Condensador · Cardioide · Plug and play</p>
-          <h3 class="producto-nombre">Micrófono USB</h3>
-          <p class="producto-desc">Se conecta por USB y funciona sin placa de sonido ni configuración. El patrón cardioide toma tu voz y deja afuera el ruido de los costados.</p>
-          <div class="producto-pie">
-            <span class="precio">$ 112.000</span>
-            <button class="btn-agregar" type="button">Agregar</button>
-          </div>
-        </div>
-      </article>
-    </div>
+    <div class="grilla" data-categoria="audio"></div>
   </main>
 
   <!-- Footer -->

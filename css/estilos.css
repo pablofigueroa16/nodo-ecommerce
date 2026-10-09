@@ -496,10 +496,58 @@ a.tarjeta:hover .tarjeta-foto img {
 
 .producto-pie {
   display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.producto-compra {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: auto;
+}
+
+.contador {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-pildora);
+}
+
+.contador-btn {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: var(--radio-pildora);
+  background-color: transparent;
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.contador-btn:hover:not(:disabled) {
+  background-color: var(--acento-suave);
+  color: var(--acento);
+}
+
+.contador-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--anillo-foco);
+}
+
+.contador-btn:disabled {
+  color: var(--placeholder);
+  cursor: not-allowed;
+}
+
+.contador-valor {
+  min-width: 28px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .precio {
