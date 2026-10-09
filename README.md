@@ -86,8 +86,6 @@ registro. El profesor confirmó que todas las consignas quedaron completas.
 
 ### Decisiones de estructura
 
-- **Una categoría más de las pedidas:** la consigna pide al menos tres en el
-  navbar y cuatro páginas; se hicieron cuatro y todas están en el navbar.
 - **Inputs con el tipo adecuado:** `email`, `password` y `date` según el dato,
   cada uno con su `<label>` y marcado como `required`.
 - **HTML semántico:** `header`, `nav`, `main`, `section`, `article` y `footer`
