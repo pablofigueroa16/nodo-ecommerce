@@ -1,5 +1,6 @@
 import { paginas } from "../data/paginas.js";
 import { rutaDesdeRaiz, rutaDePagina, esPaginaActual } from "../utils/rutas.js";
+import { cerrarSesion } from "../utils/sesion.js";
 
 function crearMarca() {
   return `
@@ -44,6 +45,11 @@ function crearNavbarCompleto() {
 }
 
 export function renderNavbar(contenedor) {
-  const esSimple = contenedor.dataset.variante === "simple";
-  contenedor.innerHTML = esSimple ? crearMarca() : crearNavbarCompleto();
+  if (contenedor.dataset.variante === "simple") {
+    contenedor.innerHTML = crearMarca();
+    return;
+  }
+
+  contenedor.innerHTML = crearNavbarCompleto();
+  contenedor.querySelector(".btn-logout").addEventListener("click", cerrarSesion);
 }
