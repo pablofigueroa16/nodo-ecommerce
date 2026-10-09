@@ -1,9 +1,9 @@
 import { paginas } from "../data/paginas.js";
-import { rutaDesdeRaiz, esPaginaActual } from "../utils/rutas.js";
+import { rutaDesdeRaiz, rutaDePagina, esPaginaActual } from "../utils/rutas.js";
 
 function crearMarca() {
   return `
-    <a class="marca" href="${rutaDesdeRaiz("index.html")}">
+    <a class="marca" href="${rutaDePagina("home")}">
       <img class="logo" src="${rutaDesdeRaiz("img/logo.svg")}" alt="" width="28" height="28">
       Nodo
     </a>
