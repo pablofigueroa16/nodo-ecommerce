@@ -11,7 +11,9 @@ El proyecto se entrega por etapas:
 
 - **Etapa 1:** estructura general de la aplicación con HTML (home, categorías,
   login y registro).
-- **Etapa 2 (actual):** estilos e identidad visual con CSS.
+- **Etapa 2:** estilos e identidad visual con CSS.
+- **Etapa 3 (actual):** JavaScript para redirecciones, sesión simulada y
+  componentes.
 
 Todavía no hay lógica de servidor ni base de datos.
 
@@ -30,6 +32,22 @@ nodo-ecommerce/
 ├── img/                    Logo (SVG) y fotos de productos (WebP, Unsplash)
 ├── css/
 │   └── estilos.css         Hoja de estilos general
+├── js/
+│   ├── main.js             Punto de entrada de todas las páginas
+│   ├── login.js            Inicio de sesión y redirección al home
+│   ├── registro.js         Redirección al login al registrarse
+│   ├── categoria.js        Dibuja las cards de cada categoría
+│   ├── data/
+│   │   ├── paginas.js      Array de páginas (títulos y rutas)
+│   │   └── productos.js    Array de productos
+│   ├── components/
+│   │   ├── navbar.js       Componente navbar
+│   │   ├── footer.js       Componente footer
+│   │   └── card.js         Componente card de producto
+│   └── utils/
+│       ├── rutas.js        Rutas relativas según la carpeta de la página
+│       ├── sesion.js       Inicio, cierre y control de sesión
+│       └── formato.js      Formato de precios
 └── README.md
 ```
 
@@ -143,19 +161,78 @@ navbar, en el pie de página y como favicon.
 - **Responsive:** el menú hamburguesa aparece desde 960 px para abajo y desde
   600 px se ajustan márgenes, títulos, hero, formularios y footer.
 
+## Etapa 3: JavaScript y componentes
+
+El objetivo de esta etapa fue empezar a usar JavaScript para redireccionar al
+usuario, crear componentes reutilizables y ordenar el proyecto pensando en su
+mantenimiento. El código usa **módulos de JavaScript** (`import` / `export`) y
+está separado en datos, componentes y utilidades.
+
+### Estructuras de datos
+
+- **`js/data/paginas.js`:** array de objetos con el `id`, el `titulo` y la
+  `ruta` de cada página, más `enNavbar` para indicar cuáles aparecen en el
+  navbar.
+- **`js/data/productos.js`:** array con los 12 productos de la tienda (3 por
+  categoría), cada uno con categoría, nombre, especificaciones, descripción,
+  precio, imagen y texto alternativo.
+
+Las rutas se guardan desde la raíz del proyecto y `js/utils/rutas.js` les
+agrega `./` o `../` según la carpeta de la página que las usa.
+
+### Componentes
+
+- **Navbar:** se arma recorriendo el array de páginas y marca sola la página
+  activa. En las páginas para usuarios logueados muestra los links y el botón
+  "Cerrar sesión"; en login y registro muestra solo el logo.
+- **Footer:** se arma con el mismo array: las categorías en una columna y las
+  páginas de cuenta en otra.
+- **Card de producto:** recibe un producto y devuelve la tarjeta con imagen,
+  título, descripción, precio y un contador para elegir la cantidad (de 1 a
+  10). Cada página de categoría filtra los productos por su categoría y dibuja
+  una card por cada uno.
+
+### Consignas cumplidas
+
+- **Login:** al enviar el formulario se guarda la sesión y se redirige al home.
+- **Logout:** el botón "Cerrar sesión" borra la sesión y redirige al login.
+- **Estructura de datos de páginas:** array de objetos con direcciones y
+  títulos en `js/data/paginas.js`.
+- **Componente navbar:** generado a partir de ese array y usado en todas las
+  páginas para usuarios logueados.
+- **Componente card:** con imagen, título, descripción, precio y botones para
+  aumentar o disminuir la cantidad.
+- **Opcional, datos para probar la card:** `js/data/productos.js`.
+
+### Decisiones
+
+- **Módulos de JavaScript:** cada archivo exporta solo lo que usan los demás,
+  sin variables globales compartidas.
+- **Sesión simulada:** como todavía no hay servidor, la sesión se guarda en
+  `sessionStorage`. El home y las categorías mandan al login si no hay sesión,
+  y el registro lleva al login al completarse.
+- **HTML más liviano:** el navbar, el footer y los productos ya no se repiten
+  en cada página; se generan desde los componentes y los datos.
+
 ## Cómo verlo
 
-Cloná el repositorio y abrí `index.html` en el navegador:
+Como el proyecto usa módulos de JavaScript, **no funciona abriendo
+`index.html` con doble clic**: hace falta un servidor local.
 
 ```bash
 git clone https://github.com/pablofigueroa16/nodo-ecommerce.git
 cd nodo-ecommerce
 ```
 
+Abrí la carpeta en VS Code y, con la extensión
+[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer),
+hacé clic derecho en `index.html` → **Open with Live Server**. El sitio te va a
+llevar al login: cualquier email y contraseña sirven para entrar.
+
 ## Próximas etapas
 
-- Listado de productos y detalle de producto.
-- Carrito de compras.
+- Detalle de producto.
+- Carrito de compras usando el botón "Agregar" y la cantidad de cada card.
 - Validación de formularios con JavaScript.
 
 ## Créditos
