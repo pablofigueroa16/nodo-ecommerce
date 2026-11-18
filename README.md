@@ -12,10 +12,12 @@ El proyecto se entrega por etapas:
 - **Etapa 1:** estructura general de la aplicación con HTML (home, categorías,
   login y registro).
 - **Etapa 2:** estilos e identidad visual con CSS.
-- **Etapa 3 (actual):** JavaScript para redirecciones, sesión simulada y
-  componentes.
+- **Etapa 3:** JavaScript para redirecciones, sesión simulada y componentes.
+- **Etapa 4 (actual):** catálogo en JSON consumido con `fetch`, carrito de
+  compras en `localStorage` y usuario logueado en `sessionStorage`.
 
-Todavía no hay lógica de servidor ni base de datos.
+No hay servidor ni base de datos: la sesión y el carrito se simulan con el
+almacenamiento del navegador.
 
 ## Estructura del proyecto
 
@@ -28,26 +30,37 @@ nodo-ecommerce/
 │   ├── notebooks.html      Categoría: Notebooks
 │   ├── perifericos.html    Categoría: Periféricos
 │   ├── audio.html          Categoría: Audio
-│   └── componentes.html    Categoría: Componentes
+│   ├── componentes.html    Categoría: Componentes
+│   └── carrito.html        Carrito de compras
+├── data/
+│   └── productos.json      Catálogo de productos (fuente de datos)
 ├── img/                    Logo (SVG) y fotos de productos (WebP, Unsplash)
 ├── css/
 │   └── estilos.css         Hoja de estilos general
 ├── js/
-│   ├── main.js             Punto de entrada de todas las páginas
-│   ├── login.js            Inicio de sesión y redirección al home
-│   ├── registro.js         Redirección al login al registrarse
-│   ├── categoria.js        Dibuja las cards de cada categoría
+│   ├── main.js             Navbar y footer de todas las páginas
+│   ├── home.js             Productos de cada categoría en el home
+│   ├── categoria.js        Cards de la página de cada categoría
+│   ├── carrito.js          Página del carrito
+│   ├── login.js            Inicio de sesión
+│   ├── registro.js         Registro de usuario
 │   ├── data/
-│   │   ├── paginas.js      Array de páginas (títulos y rutas)
-│   │   └── productos.js    Array de productos
+│   │   └── paginas.js      Array de páginas (títulos, rutas y tipo)
+│   ├── services/
+│   │   └── productos.js    fetch del catálogo JSON
 │   ├── components/
 │   │   ├── navbar.js       Componente navbar
 │   │   ├── footer.js       Componente footer
-│   │   └── card.js         Componente card de producto
+│   │   ├── card.js         Componente card de producto
+│   │   ├── aviso.js        Mensaje temporal ("Agregaste… al carrito")
+│   │   └── estado.js       Mensaje de carga o de error
 │   └── utils/
 │       ├── rutas.js        Rutas relativas según la carpeta de la página
-│       ├── sesion.js       Inicio, cierre y control de sesión
+│       ├── sesion.js       Usuario logueado (sessionStorage)
+│       ├── usuarios.js     Usuarios registrados (localStorage)
+│       ├── carrito.js      Carrito de compras (localStorage)
 │       └── formato.js      Formato de precios
+├── ENTREGA.md              Documento de la entrega final
 └── README.md
 ```
 
@@ -212,9 +225,94 @@ agrega `./` o `../` según la carpeta de la página que las usa.
 - **HTML más liviano:** el navbar, el footer y los productos ya no se repiten
   en cada página; se generan desde los componentes y los datos.
 
+### Correcciones del profesor (aplicadas en la etapa 4)
+
+- **Scripts al final del `<body>`:** si un script falla, el HTML ya se dibujó
+  igual.
+- **Navegar sin estar logueado:** el sitio ya no manda al login al entrar.
+  Cualquiera puede recorrer las categorías y armar el carrito; el login se pide
+  recién al finalizar la compra.
+- **Sin "Home" en el navbar:** al inicio se vuelve con el logo.
+
+## Etapa 4: datos, sesión y carrito
+
+El objetivo de esta etapa fue traer los productos desde una fuente de datos y
+completar el circuito de compra: elegir productos, guardarlos en el carrito y
+verlos en la página del carrito.
+
+### Fuente de datos
+
+Los productos están en **`data/productos.json`**, un array de objetos con
+`id`, `categoria`, `nombre`, `specs`, `descripcion`, `precio`, `imagen` y
+`alt`. `js/services/productos.js` los trae con `fetch` y cada página filtra lo
+que necesita:
+
+- **Home:** una sección por categoría con 3 productos y un link a la
+  categoría completa.
+- **Categorías:** todos los productos de esa categoría.
+
+Mientras carga se muestra "Cargando productos…" y, si el `fetch` falla, un
+mensaje de error en lugar de una página vacía.
+
+### Sesión (`sessionStorage`)
+
+Al iniciar sesión se guarda el usuario logueado en la clave `nodo-usuario`:
+
+```json
+{ "nombre": "Ana", "apellido": "Pérez", "email": "ana@mail.com" }
+```
+
+Si el email se registró antes, el nombre sale del registro (guardado en
+`localStorage`, clave `nodo-usuarios`, **sin la contraseña**); si no, sale de
+la parte del email antes de la @. Con sesión, el navbar saluda al usuario y
+muestra "Cerrar sesión"; sin sesión muestra "Ingresar" y "Crear cuenta".
+
+### Carrito (`localStorage`)
+
+Cada producto que se agrega se guarda en la clave `nodo-carrito`:
+
+```json
+[
+  { "id": 1, "nombre": "Notebook 14\" i5", "precio": 780000,
+    "imagen": "img/notebook-14.webp", "alt": "…", "cantidad": 2 }
+]
+```
+
+- **Card:** el contador elige de 1 a 10 unidades y "Agregar al carrito" las
+  suma. Si el producto ya estaba, se acumula la cantidad (máximo 10).
+- **Navbar:** el link al carrito muestra cuántas unidades hay, y se actualiza
+  al agregar productos, incluso desde otra pestaña.
+- **Página del carrito:** lista cada producto con foto, precio unitario,
+  cantidad editable, subtotal y botón para eliminarlo. El resumen muestra el
+  total, "Finalizar compra" y "Vaciar carrito".
+- **Finalizar compra:** sin sesión lleva al login y, al ingresar, vuelve al
+  carrito. Con sesión vacía el carrito y muestra un mensaje de gracias.
+
+### Consignas cumplidas
+
+- **Estructura JSON:** `data/productos.json`.
+- **fetch:** `js/services/productos.js`.
+- **Cards por categoría:** se completan con los datos del JSON.
+- **Home con productos:** 3 productos por cada una de las 4 categorías.
+- **Usuario en `sessionStorage`:** nombre, apellido y email.
+- **Carrito en `localStorage`:** un array con cada producto y su cantidad.
+- **Página del carrito:** muestra los productos guardados.
+- **Opcional, eliminar productos:** botón por producto y "Vaciar carrito".
+
+### Decisiones
+
+- **El carrito no pide sesión:** como en cualquier tienda, se arma sin
+  loguearse y el login se pide al pagar.
+- **El carrito guarda una copia de los datos:** nombre, precio e imagen quedan
+  en `localStorage`, así la página del carrito no depende del `fetch`.
+- **Sin contraseñas guardadas:** sin servidor no hay forma segura de
+  guardarlas, así que el login sigue siendo simulado.
+- **El email del registro no pasa por la URL:** el login lo recibe por
+  `sessionStorage` para que no quede en el historial.
+
 ## Cómo verlo
 
-Como el proyecto usa módulos de JavaScript, **no funciona abriendo
+Como el proyecto usa módulos de JavaScript y `fetch`, **no funciona abriendo
 `index.html` con doble clic**: hace falta un servidor local.
 
 ```bash
@@ -224,14 +322,9 @@ cd nodo-ecommerce
 
 Abrí la carpeta en VS Code y, con la extensión
 [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer),
-hacé clic derecho en `index.html` → **Open with Live Server**. El sitio te va a
-llevar al login: cualquier email y contraseña sirven para entrar.
-
-## Próximas etapas
-
-- Detalle de producto.
-- Carrito de compras usando el botón "Agregar" y la cantidad de cada card.
-- Validación de formularios con JavaScript.
+hacé clic derecho en `index.html` → **Open with Live Server**. Se puede
+navegar sin cuenta; para finalizar una compra, cualquier email y contraseña
+sirven para entrar.
 
 ## Créditos
 
