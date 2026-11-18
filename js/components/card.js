@@ -1,8 +1,7 @@
 import { rutaDesdeRaiz } from "../utils/rutas.js";
 import { formatearPrecio } from "../utils/formato.js";
-
-const CANTIDAD_MINIMA = 1;
-const CANTIDAD_MAXIMA = 10;
+import { agregarAlCarrito, CANTIDAD_MINIMA, CANTIDAD_MAXIMA } from "../utils/carrito.js";
+import { mostrarAviso } from "./aviso.js";
 
 export function crearCard(producto) {
   const card = document.createElement("article");
@@ -10,7 +9,7 @@ export function crearCard(producto) {
 
   card.innerHTML = `
     <div class="producto-foto">
-      <img src="${rutaDesdeRaiz(producto.imagen)}" alt="${producto.alt}">
+      <img src="${rutaDesdeRaiz(producto.imagen)}" alt="${producto.alt}" loading="lazy" width="400" height="300">
     </div>
     <div class="producto-cuerpo">
       <p class="producto-specs">${producto.specs}</p>
@@ -24,7 +23,7 @@ export function crearCard(producto) {
             <span class="contador-valor" aria-live="polite">${CANTIDAD_MINIMA}</span>
             <button class="contador-btn" type="button" data-accion="sumar" aria-label="Sumar uno">+</button>
           </div>
-          <button class="btn-agregar" type="button">Agregar</button>
+          <button class="btn-agregar" type="button">Agregar al carrito</button>
         </div>
       </div>
     </div>
@@ -34,6 +33,7 @@ export function crearCard(producto) {
   const valor = card.querySelector(".contador-valor");
   const botonRestar = card.querySelector('[data-accion="restar"]');
   const botonSumar = card.querySelector('[data-accion="sumar"]');
+  const botonAgregar = card.querySelector(".btn-agregar");
 
   function actualizarContador() {
     valor.textContent = cantidad;
@@ -48,6 +48,20 @@ export function crearCard(producto) {
 
   botonSumar.addEventListener("click", () => {
     cantidad++;
+    actualizarContador();
+  });
+
+  botonAgregar.addEventListener("click", () => {
+    const enCarrito = agregarAlCarrito(producto, cantidad);
+    const unidades = cantidad === 1 ? "1 unidad" : `${cantidad} unidades`;
+
+    if (enCarrito === CANTIDAD_MAXIMA) {
+      mostrarAviso(`${producto.nombre}: tenés el máximo de ${CANTIDAD_MAXIMA} unidades en el carrito`);
+    } else {
+      mostrarAviso(`Agregaste ${unidades} de ${producto.nombre} al carrito`);
+    }
+
+    cantidad = CANTIDAD_MINIMA;
     actualizarContador();
   });
 

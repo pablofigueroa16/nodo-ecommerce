@@ -1,27 +1,23 @@
-import { paginas } from "../data/paginas.js";
-import { rutaDePagina, esPaginaActual } from "./rutas.js";
-
+// Sesión simulada: los datos del usuario logueado viven en sessionStorage
+// y se borran al cerrar la pestaña o al cerrar sesión.
 const CLAVE_SESION = "nodo-usuario";
 
-export function iniciarSesion(email) {
-  sessionStorage.setItem(CLAVE_SESION, email);
-  window.location.href = rutaDePagina("home");
+export function iniciarSesion(usuario) {
+  sessionStorage.setItem(CLAVE_SESION, JSON.stringify(usuario));
 }
 
 export function cerrarSesion() {
   sessionStorage.removeItem(CLAVE_SESION);
-  window.location.href = rutaDePagina("login");
+}
+
+export function obtenerUsuario() {
+  try {
+    return JSON.parse(sessionStorage.getItem(CLAVE_SESION));
+  } catch {
+    return null;
+  }
 }
 
 export function haySesion() {
-  return sessionStorage.getItem(CLAVE_SESION) !== null;
-}
-
-export function protegerPagina() {
-  const paginaActual = paginas.find((pagina) => esPaginaActual(pagina.ruta));
-  const esProtegida = paginaActual && paginaActual.enNavbar;
-
-  if (esProtegida && !haySesion()) {
-    window.location.replace(rutaDePagina("login"));
-  }
+  return obtenerUsuario() !== null;
 }

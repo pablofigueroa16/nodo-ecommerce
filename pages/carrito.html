@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nodo | Carrito</title>
+  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar"></header>
+
+  <!-- Contenido -->
+  <main>
+    <h1 tabindex="-1">Tu carrito</h1>
+    <p class="bajada">Revisá los productos, ajustá las cantidades y finalizá tu compra.</p>
+
+    <!-- Se completa con los productos guardados en localStorage -->
+    <div class="carrito" id="carrito"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer></footer>
+
+  <!-- Scripts: al final del body para que el contenido se vea aunque fallen -->
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/carrito.js"></script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-import { paginas } from "../data/paginas.js";
+import { paginas, categorias } from "../data/paginas.js";
 import { rutaDesdeRaiz, rutaDePagina } from "../utils/rutas.js";
 
 function crearLista(lista) {
@@ -8,8 +8,7 @@ function crearLista(lista) {
 }
 
 export function renderFooter(contenedor) {
-  const categorias = paginas.filter((pagina) => pagina.enNavbar && pagina.id !== "home");
-  const cuenta = paginas.filter((pagina) => !pagina.enNavbar);
+  const cuenta = paginas.filter((pagina) => pagina.tipo === "cuenta" || pagina.tipo === "carrito");
   const anio = new Date().getFullYear();
 
   contenedor.innerHTML = `
@@ -22,7 +21,7 @@ export function renderFooter(contenedor) {
         <p>Tu tienda de tecnología. Notebooks, periféricos, audio y componentes para armar tu setup.</p>
       </div>
 
-      <nav class="footer-columna" aria-label="Categorías">
+      <nav class="footer-columna" aria-label="Categorías del pie de página">
         <p class="footer-titulo">Categorías</p>
         <ul>
           ${crearLista(categorias)}
