@@ -2,6 +2,8 @@
 
 **Autor:** Pablo Ezequiel Figueroa
 
+**Sitio publicado:** https://pablofigueroa16.github.io/nodo-ecommerce/
+
 ## Descripción
 
 Nodo es una tienda online de tecnología desarrollada como trabajo práctico de la
@@ -312,8 +314,13 @@ Cada producto que se agrega se guarda en la clave `nodo-carrito`:
 
 ## Cómo verlo
 
-Como el proyecto usa módulos de JavaScript y `fetch`, **no funciona abriendo
-`index.html` con doble clic**: hace falta un servidor local.
+El sitio está publicado con GitHub Pages en
+https://pablofigueroa16.github.io/nodo-ecommerce/ y se actualiza con cada push
+a `main`.
+
+Para correrlo en tu computadora: como el proyecto usa módulos de JavaScript y
+`fetch`, **no funciona abriendo `index.html` con doble clic**, hace falta un
+servidor local.
 
 ```bash
 git clone https://github.com/pablofigueroa16/nodo-ecommerce.git
