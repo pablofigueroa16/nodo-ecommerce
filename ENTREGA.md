@@ -1,70 +1,73 @@
-# Nodo — Entrega final del Trabajo Integrador
+# Nodo: entrega final del Trabajo Integrador
 
-**Materia:** Aplicaciones Web 1
-**Autor:** Pablo Ezequiel Figueroa
+Materia: Aplicaciones Web 1
+Autor: Pablo Ezequiel Figueroa
 
 ## Links
 
-- **Sitio publicado:** https://pablofigueroa16.github.io/nodo-ecommerce/
-- **Repositorio:** https://github.com/pablofigueroa16/nodo-ecommerce
-- **Video explicativo:** _(completar con el link de YouTube, Drive o Loom)_
+- Sitio publicado: https://pablofigueroa16.github.io/nodo-ecommerce/
+- Repositorio: https://github.com/pablofigueroa16/nodo-ecommerce
+- Video explicativo: https://drive.google.com/file/d/1goXZ_LJmRc4Tm2jZcv0wrkCyfeVhF6UW/view?usp=sharing
 
 ## 1. Roadmap de desarrollo
 
-El proyecto se armó en cuatro etapas. Cada una partió de las correcciones de la
-anterior y quedó registrada en el historial de commits del repositorio.
+Armé el proyecto en cuatro etapas. En cada una arranqué por las correcciones
+de la anterior, y todo el avance está en el historial de commits del
+repositorio.
 
-### Etapa 1 — Estructura HTML (agosto 2026)
+### Etapa 1: estructura HTML (agosto 2026)
 
-- Páginas: home, cuatro categorías (Notebooks, Periféricos, Audio y
+- Home, cuatro páginas de categoría (Notebooks, Periféricos, Audio y
   Componentes), login y registro.
-- Navbar en todas las páginas y formularios con los inputs adecuados
-  (`email`, `password`, `date`).
-- HTML semántico: `header`, `nav`, `main`, `section`, `article` y `footer`.
+- Navbar en todas las páginas y formularios con el tipo de input que
+  corresponde a cada dato (`email`, `password`, `date`).
+- Etiquetas semánticas: `header`, `nav`, `main`, `section`, `article` y
+  `footer`.
 
-### Etapa 2 — Estilos e identidad (septiembre 2026)
+### Etapa 2: estilos e identidad (septiembre 2026)
 
-- Paleta propia (azul eléctrico + naranja) definida con variables de CSS.
-- Tipografías Space Grotesk e Inter, y logo propio en SVG usado también como
+- Paleta propia de azul eléctrico y naranja, guardada en variables de CSS.
+- Tipografías Space Grotesk e Inter, y un logo en SVG que también uso como
   favicon.
-- Hero con degradado, tarjetas con efectos al pasar el mouse y fondo con
+- Hero con degradado, tarjetas que reaccionan al pasar el mouse y un fondo con
   grilla en login y registro.
-- Diseño responsive con menú hamburguesa hecho solo con CSS.
-- Fotos convertidas de JPG a WebP (de 572 KB a 288 KB en total).
-- Reorganización: páginas secundarias en `pages/` y rutas relativas con `./`.
+- Diseño responsive con un menú hamburguesa hecho solo con CSS.
+- Pasé las fotos de JPG a WebP y el peso total bajó de 572 KB a 288 KB.
+- Moví las páginas secundarias a `pages/` y cambié las rutas relativas al
+  formato `./`.
 
-### Etapa 3 — JavaScript y componentes (octubre 2026)
+### Etapa 3: JavaScript y componentes (octubre 2026)
 
 - Módulos de JavaScript (`import` / `export`) separados en datos, componentes
   y utilidades.
-- Array de páginas para generar el navbar y el footer.
-- Componente card de producto con contador de cantidad.
-- Login y logout con sesión simulada en `sessionStorage`.
+- Un array de páginas a partir del cual se generan el navbar y el footer.
+- Card de producto con contador de cantidad.
+- Login y logout con una sesión simulada en `sessionStorage`.
 
-### Etapa 4 — Datos, sesión y carrito (noviembre 2026)
+### Etapa 4: datos, sesión y carrito (noviembre 2026)
 
-- Correcciones de la etapa 3:
-  - scripts al final del `<body>`;
-  - navegación libre sin estar logueado;
-  - "Home" fuera del navbar (al inicio se vuelve con el logo).
-- Catálogo en `data/productos.json`, traído con `fetch`.
-- Home con 3 productos por categoría y páginas de categoría con todos sus
-  productos.
-- Usuario logueado en `sessionStorage` y carrito en `localStorage`.
-- Página de carrito: editar cantidades, eliminar productos, vaciar y
-  finalizar la compra.
-- Publicación en GitHub Pages.
+- Correcciones de la etapa 3: los scripts pasaron al final del `<body>`, el
+  sitio se puede recorrer sin iniciar sesión y saqué "Home" del navbar, porque
+  al inicio ya se vuelve con el logo.
+- El catálogo está en `data/productos.json` y lo traigo con `fetch`.
+- El home muestra 3 productos por categoría y cada página de categoría muestra
+  todos los suyos.
+- El usuario logueado se guarda en `sessionStorage` y el carrito en
+  `localStorage`.
+- En la página del carrito se pueden editar cantidades, eliminar productos,
+  vaciarlo y finalizar la compra.
+- Publiqué el sitio en GitHub Pages.
 
-### Cambios de rumbo en el camino
+### Cambios de rumbo
 
-- **Sesión obligatoria → navegación libre:** en la etapa 3 todas las páginas
-  pedían login. Por la corrección del profesor se cambió al modelo de
-  cualquier tienda: se navega y se arma el carrito libremente, y el login se
-  pide al finalizar la compra.
-- **Productos en el HTML → array en JS → JSON:** en la etapa 1 las cards
-  estaban escritas a mano; en la etapa 3 pasaron a un array de JavaScript y en
-  la etapa 4 a un archivo JSON que se consume con `fetch`, como se haría con
-  una API real.
+En la etapa 3 todas las páginas pedían login. Después de la corrección del
+profesor lo cambié a como funciona cualquier tienda: se navega y se arma el
+carrito sin cuenta, y el login se pide al finalizar la compra.
+
+Los productos también cambiaron de lugar. En la etapa 1 las cards estaban
+escritas a mano en el HTML, en la etapa 3 pasaron a un array de JavaScript y
+en la etapa 4 a un archivo JSON que leo con `fetch`, igual que si vinieran de
+una API.
 
 ## 2. Tecnologías utilizadas
 
@@ -81,85 +84,75 @@ anterior y quedó registrada en el historial de commits del repositorio.
 
 ### Tecnologías que no estaban en las entregas anteriores
 
-- **Fetch API y JSON.** Se eligieron porque permiten separar los datos del
-  código: para cambiar un precio o sumar un producto se edita el JSON, sin
-  tocar JavaScript. `fetch` devuelve una promesa que se maneja con
-  `async/await`, y si la carga falla se muestra un mensaje de error en lugar
-  de una página vacía. Si mañana el catálogo viene de una API, solo cambia la
-  URL en `js/services/productos.js`.
-- **Web Storage (`sessionStorage` y `localStorage`).** `sessionStorage` guarda
-  al usuario logueado solo mientras la pestaña está abierta, como una sesión
-  real. `localStorage` guarda el carrito de forma permanente, así no se pierde
-  al cerrar el navegador. Los dos guardan texto, así que los objetos se pasan
-  por `JSON.stringify` y `JSON.parse`.
-- **Eventos personalizados (`CustomEvent`).** Cuando el carrito cambia se
-  dispara el evento `carrito:cambio` y el navbar actualiza el contador sin que
-  la card tenga que conocer al navbar. Con el evento `storage` el contador
-  también se actualiza si el carrito cambia en otra pestaña.
-- **GitHub Pages.** Hosting gratuito que publica el sitio directo desde el
-  repositorio: cada `push` a `main` actualiza la versión online. Sirve el
-  sitio por HTTP, que es lo que necesitan los módulos de JavaScript y `fetch`.
+Fetch API y JSON. Con el catálogo en un JSON, para cambiar un precio o sumar
+un producto edito ese archivo y no toco JavaScript. `fetch` devuelve una
+promesa, que manejo con `async/await`; si la carga falla, la página muestra un
+mensaje de error. Si más adelante los productos vienen de una API, solo cambia
+la URL en `js/services/productos.js`.
+
+Web Storage. `sessionStorage` guarda al usuario logueado mientras la pestaña
+está abierta, que es lo que dura una sesión. `localStorage` guarda el carrito
+sin fecha de vencimiento, así que los productos siguen ahí aunque se cierre el
+navegador. Los dos solo guardan texto, por eso los objetos pasan por
+`JSON.stringify` al guardarse y por `JSON.parse` al leerse.
+
+Eventos personalizados (`CustomEvent`). Cada vez que cambia el carrito se
+dispara el evento `carrito:cambio`, y el navbar lo escucha para actualizar el
+contador. De esa forma la card no necesita saber que el navbar existe. El
+evento `storage` cumple la misma función cuando el carrito cambia desde otra
+pestaña.
+
+GitHub Pages. Es un hosting gratuito que publica el sitio desde el repositorio,
+y cada `push` a `main` actualiza la versión online. Sirve las páginas por HTTP,
+que es lo que necesitan los módulos de JavaScript y `fetch` para funcionar.
 
 ## 3. Mejora significativa
 
-### Nueva funcionalidad: circuito de compra completo
+### Circuito de compra completo
 
 En las entregas anteriores el botón "Agregar" no hacía nada. Ahora la compra
-funciona de punta a punta:
+funciona de principio a fin:
 
 1. El usuario elige la cantidad en la card y la agrega al carrito.
-2. Un aviso confirma lo que agregó y el contador del navbar se actualiza.
-3. En el carrito puede cambiar cantidades, eliminar productos o vaciarlo, y
-   ve el subtotal de cada producto y el total.
-4. Al finalizar la compra, si no inició sesión, se lo lleva al login y, al
-   ingresar, vuelve al carrito para terminar.
+2. Aparece un aviso con lo que agregó y se actualiza el contador del navbar.
+3. En el carrito cambia cantidades, elimina productos o lo vacía, y ve el
+   subtotal de cada producto y el total.
+4. Si toca "Finalizar compra" sin haber iniciado sesión, va al login y, cuando
+   ingresa, vuelve al carrito para terminar.
 
 ### Experiencia de usuario y accesibilidad
 
-- **Navegación libre:** ya no se obliga a loguearse para ver la tienda.
-- **Navbar según la sesión:** sin sesión muestra "Ingresar" y "Crear cuenta";
-  con sesión saluda al usuario por su nombre.
-- **Estados de carga y error:** mientras el catálogo carga, o si falla, el
-  usuario ve un mensaje en lugar de una página vacía.
-- **Accesibilidad:**
-  - foco visible en links y botones;
-  - el aviso de "agregado al carrito" se anuncia a los lectores de pantalla
-    (`role="status"`);
-  - los botones de solo ícono tienen `aria-label`;
-  - el foco no se pierde al editar el carrito con teclado;
-  - se respeta la preferencia de "reducir movimiento" del sistema.
-- **Rendimiento:** imágenes con `loading="lazy"`, ancho y alto declarados, y
-  scripts al final del `<body>`.
+Ya no hace falta loguearse para ver la tienda. El navbar cambia según la
+sesión: sin sesión muestra "Ingresar" y "Crear cuenta", y con sesión saluda al
+usuario por su nombre. Mientras el catálogo carga aparece "Cargando
+productos…", y si la carga falla se muestra un mensaje de error.
+
+Para la accesibilidad sumé:
+
+- foco visible en links y botones;
+- el aviso de "agregado al carrito" lo leen los lectores de pantalla
+  (`role="status"`);
+- los botones que son solo un ícono tienen `aria-label`;
+- al editar el carrito con teclado, el foco queda en el mismo botón;
+- si el sistema tiene activado "reducir movimiento", se desactivan las
+  animaciones.
+
+En rendimiento, las imágenes cargan con `loading="lazy"` y tienen ancho y alto
+declarados, y los scripts están al final del `<body>`.
 
 ### Organización del código
 
-- Una carpeta `services/` para el acceso a datos, separada de la lógica de
-  carrito, sesión y usuarios (`utils/`) y de los componentes visuales
-  (`components/`).
-- El array de páginas tiene un campo `tipo` (inicio, categoría, carrito,
-  cuenta) y el navbar y el footer se arman a partir de él.
+Agregué una carpeta `services/` para el acceso a datos, aparte de `utils/`
+(carrito, sesión y usuarios) y de `components/` (las piezas visuales). El
+array de páginas ahora tiene un campo `tipo` (inicio, categoría, carrito o
+cuenta), y el navbar y el footer se arman a partir de ese campo.
 
 ## 4. Publicación
 
-El sitio está publicado con **GitHub Pages** desde la rama `main`:
+El sitio está publicado con GitHub Pages desde la rama `main`:
 
 https://pablofigueroa16.github.io/nodo-ecommerce/
 
 ## 5. Video explicativo
 
-_(completar con el link)_
-
-Recorrido sugerido para el video:
-
-1. Home sin sesión: hero, categorías y productos de cada categoría.
-2. Una categoría: cards, contador de cantidad y "Agregar al carrito".
-3. El aviso y el contador del carrito en el navbar.
-4. La página del carrito: cambiar cantidades, eliminar un producto y ver el
-   total.
-5. "Finalizar compra" sin sesión: registro, login y vuelta al carrito.
-6. Compra finalizada y cierre de sesión.
-7. El sitio en el celular, con el menú hamburguesa.
-8. Reflexión personal:
-   - conocimientos previos;
-   - qué fue lo más fácil y lo más difícil;
-   - qué etapa disfrutaste más.
+https://drive.google.com/file/d/1goXZ_LJmRc4Tm2jZcv0wrkCyfeVhF6UW/view?usp=sharing
